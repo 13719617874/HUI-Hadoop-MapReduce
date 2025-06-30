@@ -1,0 +1,19 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS cipingtoji (
+ word STRING,
+ count INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LOCATION '/data/';
+
+
+
+
+LOAD DATA INPATH '/home/hadoop/opt/app/data/data.txt' OVERWRITE INTO TABLE cipingyoji;
+
+
+
+SELECT word, COUNT(*) AS frequency
+FROM word_count
+GROUP BY word
+ORDER BY frequency DESC;
